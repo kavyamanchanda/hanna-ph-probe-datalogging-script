@@ -10,7 +10,7 @@ def send_command(ser, command):
 
 # Function to record pH data into a CSV file
 def record_pH_data(filename, num_samples, time_interval):
-    with serial.Serial('COMX', 9600, timeout=1) as ser:  # Establishing serial connection with the device
+    with serial.Serial('/dev/ttyUSB0', 9600, timeout=1) as ser:  # Establishing serial connection with the device
         ser.flushInput()  # Flushing input buffer
 
         # Printing status message
