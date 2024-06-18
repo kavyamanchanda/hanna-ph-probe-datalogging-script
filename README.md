@@ -1,14 +1,35 @@
 # Hanna pH Probe Data Logging Script
 
 ## Overview
-This Python script is designed to interface with a Hanna pH probe device over a serial connection (COM port or `/dev/ttyUSB0`). It allows you to record pH data from the device and store it in a CSV file along with corresponding timestamps.
+This Python script is designed to interface with a Hanna pH probe device over a serial connection (COM port or `/dev/ttyUSB0`). Do change the port depending on the port on your device. This can be checked in MacOS by typing in Terminal: ls /dev/tty.*. 
+
+The script allows you to record pH data, temperature and mV value from the device and store it in a CSV file along with corresponding timestamps.
 
 ## Functionality
 The script performs the following functions:
 - Connects to the Hanna pH probe device over a serial connection.
-- Sends a command to the device to retrieve pH data, including pH value, temperature, and meter status.
-- Parses the response from the device and stores the pH data in a CSV file.
-- Records pH data at regular intervals for a specified number of samples.
+- Sends a command in the format of <command prefix><command><CR> to the device to retrieve a response with:
+      - Meter Mode (2 chars):
+         00 - pH range (0.001 resolution)
+         01 - pH range (0.01 resolution)
+         02 - pH range (0.1 resolution)
+         03 - mV range
+      - Meter Status (2 chars):
+         0x10 - temperature probe is connected
+         0x01 - new GLP data available
+         0x02 - new SETUP parameter
+         0x04 - out of calibration range
+         0x08 - the meter is in autoend point mode
+      - Reading status (2 chars):
+         R - in range
+         O - over range
+         U - under range
+         First character corresponds to the primary reading. Second character corresponds to mV reading.
+      - Primary reading (corresponding to the selected range) - 11 ASCII chars, including sign, decimal point and exponent.
+      - Secondary reading (only when primary reading is not mV) - 7 ASCII chars, including sign and decimal point.
+      - Temperature reading - 7 ASCII chars, with sign and two decimal points, always in degree C.
+- Parses this response from the device and stores the pH value, mV value and temperature in a CSV file.
+- Records pH data at regular intervals for a specified number of samples, both given as input by the user.
 
 ## Requirements
 - Python 3.x

@@ -40,7 +40,15 @@ def record_pH_data(filename, num_samples, time_interval):
         'meter_status': slice(2, 4),
         'reading_status': slice(4, 6),
         'pH_value': slice(6, 17),
-        'temperature': slice(24, 34),
+        'temperature': slice(24, 33),
+        'mV_value' : slice(17,24)
+    }
+                field_positions02 = {
+        'meter_mode': slice(0, 2),
+        'meter_status': slice(2, 4),
+        'reading_status': slice(4, 6),
+        'pH_value': slice(6, 17),
+        'temperature': slice(24, 33),
         'mV_value' : slice(17,24)
     }
                 # Meter Mode 03 means mV range, hence no pH value
@@ -67,7 +75,7 @@ def record_pH_data(filename, num_samples, time_interval):
                             if meter_mode == '01':
                                 extracted_data = {key: data[pos] for key, pos in field_positions01.items()}
                             if meter_mode == '02':
-                                extracted_data = {key: data[pos] for key, pos in field_positions01.items()}
+                                extracted_data = {key: data[pos] for key, pos in field_positions02.items()}
                             if meter_mode == '03':
                                 extracted_data = {key: data[pos] for key, pos in field_positions03.items()}
                                 extracted_data.update({'pH_value': 'NaN'})
