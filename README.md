@@ -1,8 +1,7 @@
 # Hanna pH Probe Data Logging Script
 
 ## Overview
-This Python script is designed to interface with a Hanna pH probe device over a serial connection (COM port or `/dev/ttyUSB0`). Do change the port depending on the port on your device. This can be checked in MacOS by typing in Terminal: ls /dev/tty.*. 
-
+This Python script is designed to interface with a Hanna pH probe device over a serial connection (COM port or `/dev/ttyUSB0`). 
 The script allows you to record pH data, temperature and mV value from the device and store it in a CSV file along with corresponding timestamps.
 
 ## Functionality
@@ -56,22 +55,25 @@ The script performs the following functions:
 
 ### Example
 ```
-$ python hanna-probe-datalogger.py
+$ python hanna-probe-datalogger.py (If bash shows python command not found, try /usr/local/bin/python3 hanna-probe-datalogger.py)
 Enter the name for the CSV file (e.g., pH_data.csv): data.csv
-Enter the number of samples to be taken: 10
-Enter the time interval between samples (in seconds): 5
+Enter the number of samples to be taken: 2
+Enter the time interval between samples (in seconds): 1
 Connection established
-Recorded pH value: 7.01
-Data value received: '<STX>00 0x01 7.01 25.00 0x10 <ETX>'
-Recorded pH value: 7.02
-Data value received: '<STX>00 0x01 7.02 25.00 0x10 <ETX>'
-...
+Data received:  {'meter_mode': '01', 'meter_status': '11', 'reading_status': 'RR', 'pH_value': '+006.85E+00', 'temperature': '+024.6807', 'mV_value': '-0001.6'}
+Data received:  {'meter_mode': '01', 'meter_status': '11', 'reading_status': 'RR', 'pH_value': '+006.85E+00', 'temperature': '+024.6807', 'mV_value': '-0001.6'}
+
 ```
+## Why is this helpful?
+- Foods that are either extremely high in pH or extremely low in pH are able to inhibit the growth of harmful microorganisms. However, all unprocessed foods in their natural forms are susceptible to the growth of yeast, mould and bacteria, which is why microbial controls such as heat processing, canning, refrigeration or frozen storage, or drying must be used to help prevent the growth of these harmful organisms. 
+- For instance, cucumbers are acidified with vinegar and stored as pickles at non-refrigerated temperatures. In order to make sure the bacteria is prevented, canning industries have to take in several factors such as processing time (time for the canned food to reach "commercial stability"), temperature, and pH value. 
+- With this datalogging script, one can easily obtain key information such as time, temperature, pH and millivolts value. This information can be used to ensure tested recipes for storage are implemented. This will ensure safe storage practices, lesser losses and food security. With this script being open-source, the user has the ability to modify, improve and customize it according to their needs. It offers more security, independence and supported documentation. 
 
 ## Troubleshooting
 - If you encounter any issues, ensure that the device is properly connected and powered on.
 - Check that the correct COM port (Windows) or `/dev/ttyUSB0` (Linux) is selected in the script.
-- Verify that the communication settings (baud rate, parity, stop bits) match those specified in the device manual.
+- Do change the port depending on the port on your device. This can be checked in MacOS by typing in Terminal: ls /dev/tty.*. 
+- Verify that the communication settings (baud rate, parity, stop bits) match those specified in the device manual and device. 
 - If the script fails to connect to the device, check for any errors reported in the terminal or command prompt.
 
 ## License
