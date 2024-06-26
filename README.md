@@ -65,9 +65,10 @@ Data received:  {'meter_mode': '01', 'meter_status': '11', 'reading_status': 'RR
 
 ```
 ## Why is this helpful?
-- Foods that are either extremely high in pH or extremely low in pH are able to inhibit the growth of harmful microorganisms. However, all unprocessed foods in their natural forms are susceptible to the growth of yeast, mould and bacteria, which is why microbial controls such as heat processing, canning, refrigeration or frozen storage, or drying must be used to help prevent the growth of these harmful organisms. 
-- For instance, cucumbers are acidified with vinegar and stored as pickles at non-refrigerated temperatures. In order to make sure the bacteria is prevented, canning industries have to take in several factors such as processing time (time for the canned food to reach "commercial stability"), temperature, and pH value. 
-- With this datalogging script, one can easily obtain key information such as time, temperature, pH and millivolts value. This information can be used to ensure tested recipes for storage are implemented. This will ensure safe storage practices, lesser losses and food security. With this script being open-source, the user has the ability to modify, improve and customize it according to their needs. It offers more security, independence and supported documentation. 
+- Foods that are either extremely high in pH or extremely low in pH are able to inhibit the growth of harmful microorganisms. However, all unprocessed foods in their natural forms are susceptible to the growth of yeast, mold, and bacteria, which is why microbial controls such as heat processing, canning, refrigeration or frozen storage, or drying must be used to help prevent the growth of these harmful organisms.
+- For instance, cucumbers are acidified with vinegar and stored as pickles at non-refrigerated temperatures. In order to make sure the bacteria are prevented, canning industries have to take in several factors such as processing time (time for the canned food to reach "commercial stability"), temperature, and pH value.
+- With this data logging script, one can easily obtain key information such as time, temperature, pH and millivolts value. This information can be used to ensure that tested recipes for storage are implemented. This will ensure safe storage practices, lesser losses, and food security. With this script being open-source, the user has the ability to modify, improve, and customize it according to their needs. It offers more security, independence, and supporting documentation.
+
 
 ## Troubleshooting
 - If you encounter any issues, ensure that the device is properly connected and powered on.
